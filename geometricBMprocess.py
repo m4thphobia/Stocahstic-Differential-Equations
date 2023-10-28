@@ -12,7 +12,8 @@ T, N = 1, 500
 dt = T/N
 t = np.arange(0, 1, dt)
 M = 1000
-B = np.cumsum(np.sqrt(dt)*np.random.randn(M, N), axis=1)
+B = np.zeros((M, N))
+B[:, 1:] = np.cumsum(np.sqrt(dt)*np.random.randn(M, N-1), axis=1)
 
 Y = np.exp(t)
 U = np.exp(np.tile(t, (M, 1))+0.5*B)
