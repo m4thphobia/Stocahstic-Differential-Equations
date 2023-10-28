@@ -12,12 +12,8 @@ if not os.path.exists(output_folder):
 
 
 T, N = 1, 500
-dt, dW, B = T/N, np.zeros(N), np.zeros(N)
-
-
-for i in range(1, N):
-    dW[i] = np.sqrt(dt)*np.random.randn()
-    B[i] = B[i-1] + dW[i]
+dt = T/N
+B = np.cumsum(np.sqrt(dt)*np.random.randn(N))
 
 
 plt.title(f"{os.path.basename(__file__).split('.')[0]}")
