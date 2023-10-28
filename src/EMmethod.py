@@ -4,15 +4,6 @@ import matplotlib.pyplot as plt
 np.random.seed(42)
 
 
-# get folder path
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(current_dir)
-output_folder = os.path.join(parent_dir, "out")
-# make folder if not exist
-if not os.path.exists(output_folder):
-    os.makedirs(output_folder)
-
-
 drift, diffusion = 2, 1
 Xzero = 1
 T, N = 1, 2**8
@@ -42,6 +33,14 @@ emerr = abs(Xem[-1] - Xtrue[-1])
 print("EM error:", emerr)
 
 
+# make folder for pics
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+output_folder = os.path.join(parent_dir, "out")
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
+
+# plot
 plt.title(f"{os.path.basename(__file__).split('.')[0]}")
 plt.plot(t, Xtrue, color="r", label="true path", linewidth=0.5)
 plt.plot(t_em, Xem, color="m", label="EM path", linewidth=0.5)
