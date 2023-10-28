@@ -14,8 +14,8 @@ if not os.path.exists(output_folder):
 T, N = 1, 500
 dt = T/N
 t = np.arange(0, 1, dt)
-B = np.cumsum(np.sqrt(dt)*np.random.randn(N))
-
+B = np.zeros(N)
+B[1:] = np.cumsum(np.sqrt(dt)*np.random.randn(N-1))
 
 plt.title(f"{os.path.basename(__file__).split('.')[0]}")
 plt.plot(t, B, color="b", label="path")
