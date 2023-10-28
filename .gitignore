@@ -1,3 +1,3 @@
 .vscode/*
-out
-test.py
+/out/
+/src/test.py
